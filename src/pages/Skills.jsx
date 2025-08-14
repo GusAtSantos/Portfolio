@@ -62,10 +62,11 @@ const Skills = () => {
     }
   }, [currentSkillIndex, currentText, skillsData]);
 
-  return (
-    <div className="skills-page">
-      <h1 className="skills-title">Minhas Habilidades</h1>
-      
+return (
+  <div className="skills-page">
+    <h1 className="skills-title">Minhas Habilidades</h1>
+    
+    <div className="terminal-container">
       <div className="terminal">
         <div className="terminal-header">
           <div className="terminal-buttons">
@@ -96,10 +97,11 @@ const Skills = () => {
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Skills;
+
 
 
 
