@@ -11,7 +11,7 @@
 
 .home-content {
     max-width: 800px;
-    margin: 0 auto;
+    margin:  auto;
     padding: 0 20px;
     position: relative;
     z-index: 2;
@@ -37,21 +37,42 @@
     margin-top: 2rem;
 }
 
-.profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid var(--primary-color);
-    filter: saturate(0%);
-    transition: 0.5s;
-    margin: 0 auto 2rem;
+/* Estilização dos botões */
+.home-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
 }
 
-.profile-image:hover {
-    filter: saturate(95%);
-    box-shadow: 0 1rem 2rem var(--primary-color);
+.home-button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+.home-button .button-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.home-button:hover .button-icon {
+    transform: rotate(45deg);
+}
+
+/* Removido o estilo da imagem de perfil */
 
 /* Cubes animation */
 .cube {
@@ -76,11 +97,6 @@
     .home-subtitle {
         font-size: 1.3rem;
     }
-    
-    .profile-image {
-        width: 250px;
-        height: 250px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -102,9 +118,8 @@
         gap: 15px;
     }
     
-    .profile-image {
-        width: 200px;
-        height: 200px;
+    .home-button {
+        padding: 10px 20px;
     }
 }
 
