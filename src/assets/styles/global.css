@@ -188,3 +188,58 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Advent Pro', sans-serif;
+  background-color: #B8DBD9;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-bottom: 80px; /* Altura do footer */
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Footer fixo */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  z-index: 100;
+}
+
+/* Prevenir overflow */
+.section {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ajustes para páginas específicas */
+.home-page, .about-me, .skills-page, .projects-page, .contact-form {
+  max-width: 100%;
+  overflow: hidden;
+}
