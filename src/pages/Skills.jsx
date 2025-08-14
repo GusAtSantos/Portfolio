@@ -62,11 +62,10 @@ const Skills = () => {
     }
   }, [currentSkillIndex, currentText, skillsData]);
 
-return (
-  <div className="skills-page">
-    <h1 className="skills-title">Minhas Habilidades</h1>
-    
-    <div className="terminal-container">
+  return (
+    <div className="skills-page">
+      <h1 className="skills-title">Minhas Habilidades</h1>
+      
       <div className="terminal">
         <div className="terminal-header">
           <div className="terminal-buttons">
@@ -97,11 +96,10 @@ return (
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Skills;
-
 
 
 
