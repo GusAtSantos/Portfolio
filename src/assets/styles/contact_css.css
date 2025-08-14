@@ -157,3 +157,8 @@
 .error-input {
     border-color: #ff4444 !important;
 }
+
+.submit-button:disabled {
+    background-color: #cccccc !important;
+    cursor: not-allowed;
+}
