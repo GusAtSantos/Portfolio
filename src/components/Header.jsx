@@ -1,29 +1,39 @@
-import "../assets/styles/header_css.css"
-import React from 'react'
-import {Link} from "react-router-dom";
-import "../assets/styles/global.css"
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import "../assets/styles/header_css.css";
 
 function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
-        <header>
-            <nav className="bar-menu">
-                <Link to="/">
-                    <h1 className="name-bar">Gustavo Santos</h1>
+        <header className="header">
+            <nav className="navbar">
+                <Link to="/" className="logo">
+                    Gustavo Santos
                 </Link>
 
-                <a className="links"><Link to="/">Home</Link></a>
-                <a className="links"><Link to="/about">About</Link></a>
-                <a className="links"><Link to="/skills">Skills</Link></a>
-                <a className="links"><Link to="/projects">Projects</Link></a>
-                <a className="links"><Link to="/contact">Contact</Link></a>
+                <button 
+                    className="mobile-menu-btn" 
+                    onClick={toggleMenu}
+                    aria-label="Toggle menu"
+                >
+                    ☰
+                </button>
 
-
+                <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+                    <li><Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+                    <li><Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>About</Link></li>
+                    <li><Link to="/skills" className="nav-link" onClick={() => setIsMenuOpen(false)}>Skills</Link></li>
+                    <li><Link to="/projects" className="nav-link" onClick={() => setIsMenuOpen(false)}>Projects</Link></li>
+                    <li><Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact</Link></li>
+                </ul>
             </nav>
         </header>
-    )
-
+    );
 }
 
-export default Header
+export default Header;
