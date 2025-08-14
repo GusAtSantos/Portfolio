@@ -162,4 +162,29 @@ a:hover {
     }
 }
 
+.portfolio-app {
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.section {
+  min-height: 100vh;
+  padding: 2rem;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.home-section, .about-section, .skills-section, 
+.projects-section, .contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Efeito de scroll suave */
+html {
+  scroll-behavior: smooth;
+}
 
