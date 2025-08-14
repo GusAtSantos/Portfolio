@@ -6,8 +6,23 @@ const Skills = () => {
     { name: "HTML", level: 90 },
     { name: "CSS", level: 90 },
     { name: "JavaScript", level: 85 },
+    { name: "TypeScript", level: 80 },
     { name: "React", level: 90 },
-    // Adicione outras habilidades aqui
+    { name: "C#", level: 80 },
+    { name: "SQL", level: 55 },
+    { name: "SQLite", level: 55 },
+    { name: "PHP", level: 70 },
+    { name: "Laravel", level: 70 },
+    { name: "Swift", level: 75 },
+    { name: "Kotlin", level: 80 },
+    { name: "Manutenção e Configuração de Computadores", level: 100 },
+    { name: "GitHub", level: 50 },
+    { name: "Vercel", level: 60 },
+    { name: "VS Code", level: 80 },
+    { name: "WebStorm", level: 65 },
+    { name: "Unity", level: 70 },
+    { name: "Netlify", level: 60 },
+    { name: "Bootstrap", level: 50 }
   ];
 
   const [displayedSkills, setDisplayedSkills] = useState([]);
@@ -85,5 +100,6 @@ const Skills = () => {
 };
 
 export default Skills;
+
 
 
