@@ -39,7 +39,7 @@ const Skills = () => {
           setDisplayedSkills(prev => [...prev, currentText]);
           setCurrentText('');
           setCurrentSkillIndex(currentSkillIndex + 1);
-        }, 800);
+        }, 1000);
         return () => clearTimeout(nextSkillTimer);
       }
     } else {
@@ -85,3 +85,4 @@ const Skills = () => {
 };
 
 export default Skills;
+
