@@ -3,17 +3,16 @@ import "../assets/styles/skills_css.css";
 
 const Skills = () => {
   const skillsData = [
-    { name: "HTML", level: 90, year: 2019 },
-    { name: "CSS", level: 90, year: 2019 },
-    { name: "JavaScript", level: 85, year: 2020 },
-    { name: "React", level: 90, year: 2021 },
+    { name: "HTML", level: 90 },
+    { name: "CSS", level: 90 },
+    { name: "JavaScript", level: 85 },
+    { name: "React", level: 90 },
     // Adicione outras habilidades aqui
   ];
 
   const [displayedSkills, setDisplayedSkills] = useState([]);
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
@@ -28,31 +27,25 @@ const Skills = () => {
   useEffect(() => {
     if (currentSkillIndex < skillsData.length) {
       const currentSkill = skillsData[currentSkillIndex];
-      const skillText = `${currentSkill.name}: ${'★'.repeat(currentSkill.level/10)} (${currentSkill.level}%) [${currentSkill.year}]`;
+      const skillText = `${currentSkill.name}: ${'★'.repeat(currentSkill.level/10)} (${currentSkill.level}%)`;
       
-      if (isTyping) {
-        if (currentText.length < skillText.length) {
-          const typingTimer = setTimeout(() => {
-            setCurrentText(skillText.slice(0, currentText.length + 1));
-          }, 50); // Velocidade de digitação
-          return () => clearTimeout(typingTimer);
-        } else {
-          // Terminou de digitar esta habilidade
-          setIsTyping(false);
-          const pauseTimer = setTimeout(() => {
-            setDisplayedSkills(prev => [...prev, currentText]);
-            setCurrentText('');
-            setCurrentSkillIndex(currentSkillIndex + 1);
-            setIsTyping(true);
-          }, 1000); // Pausa entre habilidades
-          return () => clearTimeout(pauseTimer);
-        }
+      if (currentText.length < skillText.length) {
+        const typingTimer = setTimeout(() => {
+          setCurrentText(skillText.slice(0, currentText.length + 1));
+        }, 50);
+        return () => clearTimeout(typingTimer);
+      } else {
+        const nextSkillTimer = setTimeout(() => {
+          setDisplayedSkills(prev => [...prev, currentText]);
+          setCurrentText('');
+          setCurrentSkillIndex(currentSkillIndex + 1);
+        }, 800);
+        return () => clearTimeout(nextSkillTimer);
       }
     } else {
-      // Todas as habilidades foram exibidas
       setShowCursor(false);
     }
-  }, [currentSkillIndex, currentText, isTyping, skillsData]);
+  }, [currentSkillIndex, currentText, skillsData]);
 
   return (
     <div className="skills-page">
@@ -75,10 +68,14 @@ const Skills = () => {
             </div>
           ))}
           
-          {currentSkillIndex < skillsData.length && (
+          {currentSkillIndex < skillsData.length ? (
             <div className="terminal-line">
               <span className="prompt">$</span> {currentText}
               {showCursor && <span className="cursor">|</span>}
+            </div>
+          ) : (
+            <div className="terminal-line">
+              <span className="prompt">$</span> Habilidades carregadas com sucesso!
             </div>
           )}
         </div>
