@@ -15,7 +15,7 @@
     box-sizing: border-box;
     text-decoration: none;
     list-style: none;
-    overflow:hidden;
+    overflow-x:hidden;
 }
 
 body {
@@ -161,4 +161,5 @@ a:hover {
         font-size: 1.8rem;
     }
 }
+
 
