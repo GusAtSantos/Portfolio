@@ -16,6 +16,32 @@ const projectsData = [
         image: ccs2,
         liveLink: "https://frameapics2.vercel.app/",
         codeLink: "https://github.com/GusAtSantos/frameapigames"
+    }, {
+        id: 2,
+        title: "Replica de site empresarial",
+        description: "replica de site para venda de serviços",
+        technologies: ["Html", "Css",],
+        image: chimp,
+        liveLink: "https://chimperfront.vercel.app/",
+        codeLink: "https://github.com/GusAtSantos/chimperfront"
+    },
+    {
+        id: 3,
+        title: "Jogo simples",
+        description: "um simples jogo contra o computador",
+        technologies: ["Html", "Css"],
+        image: ppt,
+        liveLink: "https://pedra-papel-tesoura-react-orcin.vercel.app/",
+        codeLink: "https://github.com/GusAtSantos/pedra-papel-tesoura-react"
+    },
+    {
+        id: 4,
+        title: "Replica de site de fotografia profissional",
+        description: "Site de fotografia profissional",
+        technologies: ["Html", "Css",],
+        image: photsent,
+        liveLink: "https://photsenfront.vercel.app/",
+        codeLink: "https://github.com/GusAtSantos/Photsenfront"
     },
     // ... outros projetos
 ];
@@ -87,3 +113,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
