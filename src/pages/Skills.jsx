@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import "../assets/styles/skills_css.css";
-import { AnimatedBackground } from 'animated-backgrounds';
 
 const Skills = () => {
   const skillsData = [
@@ -15,37 +14,48 @@ const Skills = () => {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    // Efeito de piscar o cursor
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   useEffect(() => {
     if (currentSkillIndex < skillsData.length) {
       const currentSkill = skillsData[currentSkillIndex];
       const skillText = `${currentSkill.name}: ${'★'.repeat(currentSkill.level/10)} (${currentSkill.level}%) [${currentSkill.year}]`;
-      const timeout = isTyping ? 100 : 1500;
-
+      
       if (isTyping) {
         if (currentText.length < skillText.length) {
-          const timer = setTimeout(() => {
+          const typingTimer = setTimeout(() => {
             setCurrentText(skillText.slice(0, currentText.length + 1));
-          }, timeout);
-          return () => clearTimeout(timer);
+          }, 50); // Velocidade de digitação
+          return () => clearTimeout(typingTimer);
         } else {
+          // Terminou de digitar esta habilidade
           setIsTyping(false);
-          const timer = setTimeout(() => {
+          const pauseTimer = setTimeout(() => {
             setDisplayedSkills(prev => [...prev, currentText]);
             setCurrentText('');
             setCurrentSkillIndex(currentSkillIndex + 1);
             setIsTyping(true);
-          }, 1000);
-          return () => clearTimeout(timer);
+          }, 1000); // Pausa entre habilidades
+          return () => clearTimeout(pauseTimer);
         }
       }
+    } else {
+      // Todas as habilidades foram exibidas
+      setShowCursor(false);
     }
   }, [currentSkillIndex, currentText, isTyping, skillsData]);
 
   return (
     <div className="skills-page">
-      <AnimatedBackground animationName="particleNetwork" style={{ opacity: 0.2 }} />
-      
       <h1 className="skills-title">Minhas Habilidades</h1>
       
       <div className="terminal">
@@ -68,7 +78,7 @@ const Skills = () => {
           {currentSkillIndex < skillsData.length && (
             <div className="terminal-line">
               <span className="prompt">$</span> {currentText}
-              <span className="cursor">|</span>
+              {showCursor && <span className="cursor">|</span>}
             </div>
           )}
         </div>
