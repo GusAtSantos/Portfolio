@@ -1,3 +1,18 @@
+.skills-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+.skills-title {
+  text-align: center;
+  color: #00ff00;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
 .terminal {
   max-width: 800px;
   margin: 0 auto;
@@ -5,42 +20,68 @@
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
-  /* Novos estilos adicionados: */
-  height: 500px; /* Altura fixa */
-  overflow-y: auto; /* Scroll vertical quando necessário */
+}
+
+.terminal-header {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.terminal-button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.terminal-button.red { background-color: #ff5f56; }
+.terminal-button.yellow { background-color: #ffbd2e; }
+.terminal-button.green { background-color: #27c93f; }
+
+.terminal-title {
+  color: #aaa;
+  font-size: 0.9rem;
 }
 
 .terminal-content {
-  min-height: 0; /* Importante para o flex funcionar */
-  flex-grow: 1; /* Ocupa todo espaço disponível */
-  overflow-y: auto; /* Scroll interno */
-  padding-right: 10px; /* Espaço para o scroll */
-}
-
-/* Estilizando a scrollbar */
-.terminal-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.terminal-content::-webkit-scrollbar-track {
-  background: #1a1a1a;
-}
-
-.terminal-content::-webkit-scrollbar-thumb {
-  background-color: #00ff00;
-  border-radius: 4px;
+  min-height: 300px;
 }
 
 .terminal-line {
   margin-bottom: 0.8rem;
   line-height: 1.6;
-  word-break: break-word; /* Quebra palavras longas */
-  white-space: pre-wrap; /* Preserva quebras de linha */
 }
-.terminal-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
+
+.prompt {
+  color: #00ff00;
+  margin-right: 10px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background-color: #00ff00;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .skills-title {
+    font-size: 2rem;
+  }
+  
+  .terminal {
+    padding: 1rem;
+  }
 }
