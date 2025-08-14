@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/styles/global.css";
 import "../assets/styles/home_css.css";
+import me2 from "../assets/images/WhatsApp_Image_2025-02-26_at_21.19.21-removebg-preview.png";
 import { AnimatedBackground } from 'animated-backgrounds';
 import north from "../assets/images/north_east_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
 
@@ -34,13 +35,15 @@ function LandingPage() {
                 </div>
             </div>
 
-            {/* Removido o container da imagem de perfil */}
-            
-            {/* Cubes animados */}
-            <div className="cube-animation">
-                {[...Array(6)].map((_, i) => (
-                    <div key={i} className={`cube cube-${i+1}`}></div>
-                ))}
+            <div className="profile-container">
+                <img src={me2} alt="Gustavo Santos" className="profile-image" />
+                
+                {/* Cubes animados */}
+                <div className="cube-animation">
+                    {[...Array(6)].map((_, i) => (
+                        <div key={i} className={`cube cube-${i+1}`}></div>
+                    ))}
+                </div>
             </div>
         </div>
     );
