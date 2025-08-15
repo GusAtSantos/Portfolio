@@ -4,12 +4,13 @@
   background-color: #1a1a1a;
   color: #00ff00;
   font-family: 'Courier New', monospace;
+  overflow:hidden;
 }
 
 .skills-title {
   text-align: center;
   color: #00ff00;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
   font-size: 2.5rem;
 }
 
@@ -114,3 +115,4 @@
     height: 400px;
   }
 }
+
