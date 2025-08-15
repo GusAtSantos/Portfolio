@@ -1,5 +1,5 @@
 *{
-    overflow:scroll ;
+    overflow:hidden ;
 }
 .skills-page {
   padding: 2rem;
@@ -117,5 +117,6 @@
     height: 400px;
   }
 }
+
 
 
