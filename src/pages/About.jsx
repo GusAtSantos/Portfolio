@@ -29,7 +29,6 @@ function About() {
                     >
                         <button className="btn">
                             <span>Download Currículo</span>
-                            <img src={dwl} alt="" className="btn-icon" />
                         </button>
                     </a>
                 </div>
@@ -43,3 +42,4 @@ function About() {
 }
 
 export default About;
+
