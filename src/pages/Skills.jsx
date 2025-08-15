@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "../assets/styles/skills_css.css";
 
 const Skills = () => {
@@ -29,9 +29,9 @@ const Skills = () => {
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
+  const terminalContentRef = useRef(null);
 
   useEffect(() => {
-    // Efeito de piscar o cursor
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 500);
@@ -42,25 +42,31 @@ const Skills = () => {
   useEffect(() => {
     if (currentSkillIndex < skillsData.length) {
       const currentSkill = skillsData[currentSkillIndex];
-      const skillText = `${currentSkill.name}: ${'★'.repeat(currentSkill.level/10)} (${currentSkill.level}%)`;
+      const skillText = `${currentSkill.name}: ${'★'.repeat(Math.floor(currentSkill.level/10))} (${currentSkill.level}%)`;
       
       if (currentText.length < skillText.length) {
         const typingTimer = setTimeout(() => {
           setCurrentText(skillText.slice(0, currentText.length + 1));
-        }, 50);
+        }, currentSkillIndex > 5 ? 10 : 50);
         return () => clearTimeout(typingTimer);
       } else {
         const nextSkillTimer = setTimeout(() => {
           setDisplayedSkills(prev => [...prev, currentText]);
           setCurrentText('');
           setCurrentSkillIndex(currentSkillIndex + 1);
-        }, 25);
+        }, 200);
         return () => clearTimeout(nextSkillTimer);
       }
     } else {
       setShowCursor(false);
     }
   }, [currentSkillIndex, currentText, skillsData]);
+
+  useEffect(() => {
+    if (terminalContentRef.current) {
+      terminalContentRef.current.scrollTop = terminalContentRef.current.scrollHeight;
+    }
+  }, [displayedSkills, currentText]);
 
   return (
     <div className="skills-page">
@@ -76,7 +82,7 @@ const Skills = () => {
           <div className="terminal-title">terminal</div>
         </div>
         
-        <div className="terminal-content">
+        <div className="terminal-content" ref={terminalContentRef}>
           {displayedSkills.map((skill, index) => (
             <div key={index} className="terminal-line">
               <span className="prompt">$</span> {skill}
@@ -100,8 +106,3 @@ const Skills = () => {
 };
 
 export default Skills;
-
-
-
-
-
