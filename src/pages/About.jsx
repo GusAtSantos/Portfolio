@@ -1,7 +1,6 @@
 import React from "react";
 import "../assets/styles/global.css";
 import "../assets/styles/about_css.css";
-import Me from "../assets/images/Beige Simple Photo Signature Twitter Profile Picture.png";
 import { AnimatedBackground } from 'animated-backgrounds';
 import dwl from "../assets/images/arrow_downward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
 
@@ -28,13 +27,10 @@ function About() {
                         className="download-cv"
                     >
                         <button className="btn">
-                            <span>Download Currículo</span>
+                            <span> Download Currículo </span>
                         </button>
+                        
                     </a>
-                </div>
-                
-                <div className="about-image">
-                    <img src={Me} alt="Gustavo Santos" className="profile-image" />
                 </div>
             </div>
         </section>
@@ -42,4 +38,5 @@ function About() {
 }
 
 export default About;
+
 
