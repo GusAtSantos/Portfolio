@@ -9,16 +9,7 @@
     flex: 1;
 }
 
-.about-image {
-    flex: 1;
-    text-align: center;
-}
 
-.about-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
 
 .about-text {
     font-size: 1.1rem;
@@ -55,10 +46,6 @@
         order: 2;
     }
     
-    .about-image {
-        order: 1;
-        margin-bottom: 30px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -66,3 +53,4 @@
         font-size: 1rem;
     }
 }
+
