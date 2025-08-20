@@ -1,148 +1,18 @@
-.about-page {
-  padding: 4rem 2rem;
-  min-height: 100vh;
-  background-color: var(--background-color);
-  color: var(--text-color);
+#btn-dwc{
+position: absolute;
+    top: 40rem;
+    left: 20rem;
+}
+.svg-dwl{
+    display: none; /* Esconde o SVG inicialmente */
+    width: auto;
+    position: absolute;
+    left: 12rem;
+    transition: 0.5s;
 }
 
-.about-container {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.about-title {
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 3rem;
-  color: var(--primary-color);
-}
-
-.about-content {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3rem;
-}
-
-.about-text {
-  max-width: 800px;
-  text-align: center;
-}
-
-.about-text p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  color: var(--secondary-color);
-}
-
-/* Estilos do Botão de Download */
-.cv-download-container {
-  margin: 2.5rem 0;
-}
-
-.cv-download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 30px;
-  background: linear-gradient(135deg, var(--primary-color), #2563eb);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
-}
-
-.cv-download-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-  background: linear-gradient(135deg, #2563eb, var(--primary-color));
-}
-
-.cv-download-btn:active {
-  transform: translateY(-1px);
-}
-
-.download-arrow {
-  font-size: 1.3rem;
-  transition: transform 0.3s ease;
-}
-
-.cv-download-btn:hover .download-arrow {
-  transform: translateY(3px);
-}
-
-.about-skills {
-  background-color: var(--card-background);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.about-skills h2 {
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.about-skills ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about-skills li {
-  padding: 0.8rem 0;
-  border-bottom: 1px solid var(--border-color);
-  color: var(--secondary-color);
-  font-size: 1.1rem;
-}
-
-.about-skills li:last-child {
-  border-bottom: none;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .about-page {
-    padding: 2rem 1rem;
-  }
-  
-  .about-title {
-    font-size: 2.5rem;
-  }
-  
-  .about-text p {
-    font-size: 1.1rem;
-  }
-  
-  .cv-download-btn {
-    padding: 12px 25px;
-    font-size: 1rem;
-  }
-  
-  .about-skills {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-title {
-    font-size: 2rem;
-  }
-  
-  .about-text p {
-    font-size: 1rem;
-  }
-  
-  .cv-download-btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-  
-  .about-skills li {
-    font-size: 1rem;
-  }
+#btn-dwc:hover .svg-dwl
+{
+    transition: 0.5s;
+    display: inline-block; /* Mostra o SVG quando o mouse passa por cima do botão */
 }
