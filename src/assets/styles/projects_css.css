@@ -236,7 +236,7 @@
 .more-projects-btn {
     display: inline-flex;
     align-items: center;
-    bottom: 10px;
+    bottom: 50px;
     padding: 10px 25px;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
