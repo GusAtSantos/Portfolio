@@ -88,7 +88,10 @@ const Projects = () => {
                             Jogos
                         </button>
                     </div>
-                     <div className="more-projects">
+                    
+                
+                </div>
+                 <div className="more-projects">
                     <a 
                         href="https://github.com/GusAtSantos?tab=repositories" 
                         target="_blank"
@@ -98,8 +101,7 @@ const Projects = () => {
                         <span>Explorar Mais Projetos</span>
                         <img src={dwl} alt="" className="btn-icon" />
                     </a>
-                </div>
-                </div>
+                    </div>
                 
                 <div className="projects-grid">
                     {filteredProjects.map((project) => (
