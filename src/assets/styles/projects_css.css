@@ -234,7 +234,7 @@
 }
 
 .more-projects-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     bottom: 50px;
     padding: 10px 25px;
