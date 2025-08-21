@@ -79,36 +79,6 @@ function About() {
             </div>
           </div>
         </div>
-        
-        <div className="skills-section">
-          <h2 className="skills-title">Principais Habilidades</h2>
-          <div className="skills-grid">
-            <div className="skill-item">
-              <span className="skill-name">React</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '90%'}}></div>
-              </div>
-            </div>
-            <div className="skill-item">
-              <span className="skill-name">JavaScript</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '85%'}}></div>
-              </div>
-            </div>
-            <div className="skill-item">
-              <span className="skill-name">Node.js</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '80%'}}></div>
-              </div>
-            </div>
-            <div className="skill-item">
-              <span className="skill-name">CSS</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '95%'}}></div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
