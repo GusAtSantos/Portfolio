@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatedBackground } from 'animated-backgrounds';
 import emailjs from 'emailjs-com';
-import './assets/styles/global.css';
-import './assets/styles/home_css.css';
-import './assets/styles/about_css.css';
-import './assets/styles/skills_css.css';
-import './assets/styles/projects_css.css';
-import './assets/styles/contact_css.css';
-import './assets/styles/header_css.css';
-import './assets/styles/footer_css.css';
-import './assets/styles/social_css.css';
+import '../assets/styles/global.css';
+import '../assets/styles/home_css.css';
+import '../assets/styles/about_css.css';
+import '../assets/styles/skills_css.css';
+import '../assets/styles/projects_css.css';
+import '../assets/styles/contact_css.css';
+import '../assets/styles/header_css.css';
+import '../assets/styles/footer_css.css';
+import '../assets/styles/social_css.css';
 
 // Import de ícones
 import north from "./assets/images/north_east_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
