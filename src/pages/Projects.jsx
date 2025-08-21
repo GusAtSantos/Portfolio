@@ -7,7 +7,6 @@ import ppt from "../assets/images/ppt.png";
 import photsent from "../assets/images/photosen.png";
 import dwl from "../assets/images/arrow_downward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
 import github from "../assets/images/4202098_github_code_developer_logo_icon.svg";
-import external from "../assets/images/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
 
 const projectsData = [
     {
