@@ -3,7 +3,6 @@ import "../assets/styles/global.css";
 import "../assets/styles/about_css.css";
 import { AnimatedBackground } from 'animated-backgrounds';
 import dwl from "../assets/images/arrow_downward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
-import Me from "../assets/images/Beige Simple Photo Signature Twitter Profile Picture.png";
 
 function About() {
   const sectionRef = useRef(null);
@@ -66,17 +65,13 @@ function About() {
                 <span>Baixar Currículo</span>
                 <img src={dwl} alt="" className="btn-icon" />
               </a>
-              
-              <button className="btn btn-secondary">
-                Entrar em Contato
-              </button>
             </div>
           </div>
           
           <div className="about-visual">
             <div className="profile-image">
               <div className="image-placeholder">
-                <span><img src={Me} alt=""  /></span>
+                <span>Sua Foto Aqui</span>
               </div>
               <div className="floating-element element-1">🚀</div>
               <div className="floating-element element-2">💻</div>
@@ -84,6 +79,32 @@ function About() {
             </div>
           </div>
         </div>
+        
+        <div className="skills-section">
+          <h2 className="skills-title">Principais Habilidades</h2>
+          <div className="skills-grid">
+            <div className="skill-item">
+              <span className="skill-name">React</span>
+              <div className="skill-bar">
+                <div className="skill-progress" style={{width: '90%'}}></div>
+              </div>
+            </div>
+            <div className="skill-item">
+              <span className="skill-name">JavaScript</span>
+              <div className="skill-bar">
+                <div className="skill-progress" style={{width: '85%'}}></div>
+              </div>
+            </div>
+            <div className="skill-item">
+              <span className="skill-name">Node.js</span>
+              <div className="skill-bar">
+                <div className="skill-progress" style={{width: '80%'}}></div>
+              </div>
+            </div>
+            <div className="skill-item">
+              <span className="skill-name">CSS</span>
+              <div className="skill-bar">
+                <div className="skill-progress" style={{width: '95%'}}></div>
               </div>
             </div>
           </div>
