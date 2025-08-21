@@ -1,5 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { AnimatedBackground } from 'animated-backgrounds';
+import "../assets/styles/global.css";
+import "../assets/styles/home_css.css";
+import "../assets/styles/about_css.css";
+import "../assets/styles/skills_css.css";
+import "../assets/styles/projects_css.css";
+import "../assets/styles/contact_css.css";
+import "../assets/styles/header_css.css";
+import "../assets/styles/footer_css.css";
+import "../assets/styles/social_css.css";
 import north from "../assets/images/north_east_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
 import Me from "../assets/images/Beige Simple Photo Signature Twitter Profile Picture.png";
 import me2 from "../assets/images/WhatsApp_Image_2025-02-26_at_21.19.21-removebg-preview.png";
@@ -18,68 +27,136 @@ const PortfolioSPA = () => {
   // Estado para controle do menu mobile
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Verificar se é mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Dados das habilidades
   const skillsData = [
-    "HTML: ********** (90%)",
-    "CSS: ********** (90%)",
-    "JavaScript: ********* (85%)",
-    // ... outras habilidades
+    { name: "HTML", level: 90 },
+    { name: "CSS", level: 90 },
+    { name: "JavaScript", level: 85 },
+    { name: "TypeScript", level: 80 },
+    { name: "React", level: 90 },
+    { name: "C#", level: 80 },
+    { name: "SQL", level: 55 },
+    { name: "SQLite", level: 55 },
+    { name: "PHP", level: 70 },
+    { name: "Laravel", level: 70 },
+    { name: "Swift", level: 75 },
+    { name: "Kotlin", level: 80 },
+    { name: "Manutenção e Configuração de Computadores", level: 100 },
+    { name: "GitHub", level: 50 },
+    { name: "Vercel", level: 60 },
+    { name: "VS Code", level: 80 },
+    { name: "WebStorm", level: 65 },
+    { name: "Unity", level: 70 },
+    { name: "Netlify", level: 60 },
+    { name: "Bootstrap", level: 50 }
   ];
 
   // Dados dos projetos
   const projectsData = [
     {
       id: 1,
-      title: "Projeto com 2 api's",
-      description: "Um site para teste de api de um jogo.",
+      title: "Projeto com 2 API's",
+      description: "Um site para teste de API de um jogo.",
       technologies: ["React", "CSS", "JavaScript"],
       image: ccs2,
       liveLink: "https://frameapics2.vercel.app/",
       codeLink: "https://github.com/GusAtSantos/frameapigames"
     },
-    // ... outros projetos
+    {
+      id: 2,
+      title: "Replica de site empresarial",
+      description: "replica de site para venda de serviços",
+      technologies: ["Html", "Css"],
+      image: chimp,
+      liveLink: "https://chimperfront.vercel.app/",
+      codeLink: "https://github.com/GusAtSantos/chimperfront"
+    },
+    {
+      id: 3,
+      title: "Jogo simples",
+      description: "um simples jogo contra o computador",
+      technologies: ["Html", "Css"],
+      image: ppt,
+      liveLink: "https://pedra-papel-tesoura-react-orcin.vercel.app/",
+      codeLink: "https://github.com/GusAtSantos/pedra-papel-tesoura-react"
+    },
+    {
+      id: 4,
+      title: "Replica de site de fotografia profissional",
+      description: "Site de fotografia profissional",
+      technologies: ["Html", "Css"],
+      image: photsent,
+      liveLink: "https://photsenfront.vercel.app/",
+      codeLink: "https://github.com/GusAtSantos/Photsenfront"
+    }
   ];
+
+  // Estado para formulário de contato
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Efeito de digitação para habilidades
   const [displayedSkills, setDisplayedSkills] = useState([]);
   const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
+  const terminalContentRef = useRef(null);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
     }, 500);
-    return () => clearInterval(interval);
+
+    return () => clearInterval(cursorInterval);
   }, []);
 
   useEffect(() => {
     if (currentSkillIndex < skillsData.length) {
       const currentSkill = skillsData[currentSkillIndex];
+      const skillText = `${currentSkill.name}: ${'★'.repeat(Math.floor(currentSkill.level/10))} (${currentSkill.level}%)`;
       
-      if (isTyping) {
-        if (currentText.length < currentSkill.length) {
-          const timer = setTimeout(() => {
-            setCurrentText(currentSkill.slice(0, currentText.length + 1));
-          }, 90);
-          return () => clearTimeout(timer);
-        } else {
-          setIsTyping(false);
-          const timer = setTimeout(() => {
-            setDisplayedSkills((prev) => [...prev, currentText]);
-            setCurrentText('');
-            setCurrentSkillIndex(currentSkillIndex + 1);
-            setIsTyping(true);
-          }, 1000);
-          return () => clearTimeout(timer);
-        }
+      if (currentText.length < skillText.length) {
+        const typingTimer = setTimeout(() => {
+          setCurrentText(skillText.slice(0, currentText.length + 1));
+        }, currentSkillIndex > 5 ? 10 : 50);
+        return () => clearTimeout(typingTimer);
+      } else {
+        const nextSkillTimer = setTimeout(() => {
+          setDisplayedSkills(prev => [...prev, currentText]);
+          setCurrentText('');
+          setCurrentSkillIndex(currentSkillIndex + 1);
+        }, 200);
+        return () => clearTimeout(nextSkillTimer);
       }
     } else {
       setShowCursor(false);
     }
-  }, [currentSkillIndex, currentText, isTyping]);
+  }, [currentSkillIndex, currentText, skillsData]);
+
+  useEffect(() => {
+    if (terminalContentRef.current) {
+      terminalContentRef.current.scrollTop = terminalContentRef.current.scrollHeight;
+    }
+  }, [displayedSkills, currentText]);
 
   // Função para rolar suavemente
   const scrollToSection = (sectionId) => {
@@ -91,32 +168,99 @@ const PortfolioSPA = () => {
     }
   };
 
+  // Funções para formulário de contato
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = 'Nome é obrigatório';
+    if (!formData.email.trim()) {
+      newErrors.email = 'E-mail é obrigatório';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'E-mail inválido';
+    }
+    if (!formData.message.trim()) newErrors.message = 'Mensagem é obrigatória';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    if (validateForm()) {
+      try {
+        // Simulação de envio de email
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        alert('Mensagem enviada com sucesso!');
+        setFormData({ name: '', email: '', message: '' });
+      } catch (error) {
+        console.error('Erro ao enviar:', error);
+        alert('Ocorreu um erro. Tente novamente mais tarde.');
+      }
+    }
+    setIsSubmitting(false);
+  };
+
   return (
-    <div className="portfolio-container">
+    <div className="portfolio-app">
       {/* Header */}
       <header className="header">
-        <nav className="navbar">
+        <div className="navbar">
           <div className="logo" onClick={() => scrollToSection('home')}>
             Gustavo Santos
           </div>
           
-          <button 
-            className="mobile-menu-btn" 
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            ☰
-          </button>
-
-          <ul className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-            <li><button onClick={() => scrollToSection('home')}>Home</button></li>
-            <li><button onClick={() => scrollToSection('about')}>About</button></li>
-            <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
-            <li><button onClick={() => scrollToSection('projects')}>Projects</button></li>
-            <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
-          </ul>
-        </nav>
+          {isMobile ? (
+            <button 
+              className="menu-toggle"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? '✕' : '☰'}
+            </button>
+          ) : (
+            <nav className="desktop-nav">
+              <ul className="nav-menu">
+                <li><button onClick={() => scrollToSection('home')}>Home</button></li>
+                <li><button onClick={() => scrollToSection('about')}>About</button></li>
+                <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
+                <li><button onClick={() => scrollToSection('projects')}>Projects</button></li>
+                <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+              </ul>
+            </nav>
+          )}
+        </div>
       </header>
+
+      {/* Sidebar para mobile */}
+      {isMobile && (
+        <>
+          <div 
+            className={`sidebar-overlay ${isMenuOpen ? 'active' : ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          />
+          
+          <aside className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
+            <nav className="mobile-nav">
+              <ul>
+                <li><button onClick={() => scrollToSection('home')}>Home</button></li>
+                <li><button onClick={() => scrollToSection('about')}>About</button></li>
+                <li><button onClick={() => scrollToSection('skills')}>Skills</button></li>
+                <li><button onClick={() => scrollToSection('projects')}>Projects</button></li>
+                <li><button onClick={() => scrollToSection('contact')}>Contact</button></li>
+              </ul>
+            </nav>
+          </aside>
+        </>
+      )}
 
       {/* Seção Home */}
       <section id="home" className="section home-section">
@@ -131,12 +275,25 @@ const PortfolioSPA = () => {
               <span>About</span>
               <img src={north} alt="" className="button-icon" />
             </button>
-            {/* ... outros botões */}
+            <button onClick={() => scrollToSection('skills')} className="home-button">
+              <span>Skills</span>
+              <img src={north} alt="" className="button-icon" />
+            </button>
+            <button onClick={() => scrollToSection('projects')} className="home-button">
+              <span>Projects</span>
+              <img src={north} alt="" className="button-icon" />
+            </button>
+            <button onClick={() => scrollToSection('contact')} className="home-button">
+              <span>Contact</span>
+              <img src={north} alt="" className="button-icon" />
+            </button>
           </div>
         </div>
 
-        <div className="profile-container">
-          <img src={me2} alt="Gustavo Santos" className="profile-image" />
+        <div className="cube-animation">
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className={`cube cube-${i+1}`}></div>
+          ))}
         </div>
       </section>
 
@@ -145,28 +302,26 @@ const PortfolioSPA = () => {
         <AnimatedBackground animationName="particleNetwork" style={{ opacity: 0.2 }} />
         
         <div className="container">
+          <h1 className="section-title">Sobre Mim</h1>
+          
           <div className="about-content">
-            <h1 className="section-title">Sobre Mim</h1>
-            
-            <p className="about-text">
+            <p className="about-me">
               Desenvolvedor de aplicações web e mobile. Sou apaixonado por criar soluções
-              inovadoras e eficientes...
+              inovadoras e eficientes. Aprendizado em todo o ciclo de desenvolvimento, desde a concepção até o lançamento e
+              manutenção de projetos. Busco uma oportunidade em uma empresa desafiadora para aplicar e expandir meus
+              conhecimentos e contribuir para o crescimento da equipe.
             </p>
             
-            <a href="https://drive.google.com/drive/u/4/folders/1CLSos1uFhI95ZYVRldFE47A-Vj3Tfhch" 
-               target="_blank"
-               rel="noopener noreferrer"
-               className="download-cv"
+            <a 
+              href="https://drive.google.com/drive/u/4/folders/1CLSos1uFhI95ZYVRldFE47A-Vj3Tfhch" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="download-cv"
             >
-              <button className="btn">
-                <span>Download Currículo</span>
-                <img src={dwl} alt="" className="btn-icon" />
+              <button className="btn" id="btn-dwc">
+                Download Currículo <img src={dwl} alt="" className="svg-dwl"/>
               </button>
             </a>
-          </div>
-          
-          <div className="about-image">
-            <img src={Me} alt="Gustavo Santos" className="profile-image" />
           </div>
         </div>
       </section>
@@ -188,7 +343,7 @@ const PortfolioSPA = () => {
               <div className="terminal-title">terminal</div>
             </div>
             
-            <div className="terminal-content">
+            <div className="terminal-content" ref={terminalContentRef}>
               {displayedSkills.map((skill, index) => (
                 <div key={index} className="terminal-line">
                   <span className="prompt">$</span> {skill}
@@ -202,7 +357,7 @@ const PortfolioSPA = () => {
                 </div>
               ) : (
                 <div className="terminal-line">
-                  <span className="prompt">$</span> Todas habilidades carregadas!
+                  <span className="prompt">$</span> Habilidades carregadas com sucesso!
                 </div>
               )}
             </div>
@@ -220,24 +375,57 @@ const PortfolioSPA = () => {
           <div className="projects-grid">
             {projectsData.map((project) => (
               <div key={project.id} className="project-card">
-                <img src={project.image} alt={project.title} className="project-image" />
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="technologies">
-                  {project.technologies.map((tech, index) => (
-                    <span key={index}>{tech}</span>
-                  ))}
+                <div className="project-image-container">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="project-image" 
+                  />
                 </div>
-                <div className="project-links">
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                    Ver Projeto
-                  </a>
-                  <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                    Código no GitHub
-                  </a>
+                
+                <div className="project-content">
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-description">{project.description}</p>
+                  
+                  <div className="technologies">
+                    {project.technologies.map((tech, index) => (
+                      <span key={index} className="technology">{tech}</span>
+                    ))}
+                  </div>
+                  
+                  <div className="project-links">
+                    <a 
+                      href={project.liveLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      Ver Projeto
+                    </a>
+                    <a 
+                      href={project.codeLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      Código no GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="more-projects">
+            <a 
+              href="https://github.com/GusAtSantos?tab=repositories" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="more-projects-btn"
+            >
+              <span>Veja mais projetos no GitHub</span>
+              <img src={dwl} alt="" className="btn-icon" />
+            </a>
           </div>
         </div>
       </section>
@@ -250,30 +438,91 @@ const PortfolioSPA = () => {
           <h1 className="section-title">Contato</h1>
           
           <div className="contact-container">
-            <div className="contact-form">
-              {/* Formulário de contato aqui */}
-            </div>
+            <form onSubmit={handleSubmit} className="contact-form" noValidate>
+              <div className="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Seu nome"
+                  className={`form-input ${errors.name ? 'error-input' : ''}`}
+                />
+                {errors.name && <span className="error">{errors.name}</span>}
+              </div>
+
+              <div className="form-group">
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="seuemail@exemplo.com"
+                  className={`form-input ${errors.email ? 'error-input' : ''}`}
+                />
+                {errors.email && <span className="error">{errors.email}</span>}
+              </div>
+
+              <div className="form-group">
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Sua mensagem..."
+                  className={`form-textarea ${errors.message ? 'error-input' : ''}`}
+                />
+                {errors.message && <span className="error">{errors.message}</span>}
+              </div>
+
+              <button 
+                type="submit" 
+                className="submit-button"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Enviando...' : 'Enviar'}
+              </button>
+            </form>
             
             <div className="contact-info">
-              <h2>Informações de Contato</h2>
+              <h2 className="contact-info-title">Informações de Contato</h2>
               
               <div className="contact-details">
                 <div className="contact-item">
-                  <img src={mail} alt="Email" />
+                  <img src={mail} alt="Email" className="contact-icon" />
                   <span>gustavoatanasiosantos@gmail.com</span>
                 </div>
                 
                 <div className="contact-item">
-                  <img src={phone} alt="Telefone" />
+                  <img src={phone} alt="Telefone" className="contact-icon" />
                   <span>(31) 9 9290-1102</span>
                 </div>
               </div>
               
               <div className="social-links">
-                <a href="https://github.com/GusAtSantos" target="_blank" rel="noopener noreferrer">
+                <a 
+                  href="https://github.com/GusAtSantos" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
                   <img src={github} alt="GitHub" />
                 </a>
-                {/* ... outros links sociais */}
+                <a 
+                  href="https://www.linkedin.com/in/gustavo-santos-002415288/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
+                  <img src={linkedin} alt="LinkedIn" />
+                </a>
+                <a 
+                  href="https://www.instagram.com/gus._.santos._/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-link"
+                >
+                  <img src={insta} alt="Instagram" />
+                </a>
               </div>
             </div>
           </div>
@@ -282,7 +531,36 @@ const PortfolioSPA = () => {
 
       {/* Footer */}
       <footer className="footer">
-        <p>© {new Date().getFullYear()} Gustavo Santos. Todos os direitos reservados.</p>
+        <div className="footer-container">
+          <p className="copyright">© {new Date().getFullYear()} Gustavo Santos. Todos os direitos reservados.</p>
+          
+          <div className="social-links">
+            <a 
+              href="https://github.com/GusAtSantos" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <img src={github} alt="GitHub" className="social-icon" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/gustavo-santos-002415288/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <img src={linkedin} alt="LinkedIn" className="social-icon" />
+            </a>
+            <a 
+              href="https://www.instagram.com/gus._.santos._/" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-link"
+            >
+              <img src={insta} alt="Instagram" className="social-icon" />
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );
