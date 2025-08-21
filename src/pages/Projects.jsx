@@ -143,27 +143,7 @@ const Projects = () => {
                                         <span key={index} className="technology">{tech}</span>
                                     ))}
                                 </div>
-                                
-                                <div className="project-links">
-                                    <a 
-                                        href={project.liveLink} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="project-link live-demo"
-                                    >
-                                        <span>Ver Projeto</span>
-                                        <img src={north} alt="" className="btn-icon" />
-                                    </a>
-                                    <a 
-                                        href={project.codeLink} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="project-link source-code"
-                                    >
-                                        <span>Código Fonte</span>
-                                        <img src={github} alt="" className="btn-icon" />
-                                    </a>
-                                </div>
+
                             </div>
                         </div>
                     ))}
