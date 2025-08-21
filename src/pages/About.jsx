@@ -3,6 +3,7 @@ import "../assets/styles/global.css";
 import "../assets/styles/about_css.css";
 import { AnimatedBackground } from 'animated-backgrounds';
 import dwl from "../assets/images/arrow_downward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
+import Me from "../assets/images/Beige Simple Photo Signature Twitter Profile Picture.png";
 
 function About() {
   const sectionRef = useRef(null);
@@ -30,7 +31,7 @@ function About() {
         <header className="about-header">
           <h1 id="about-heading" className="about-title">
             <span className="greeting">Olá, eu sou</span>
-            <span className="name-highlight">Seu Nome</span>
+            <span className="name-highlight">Gustavo Santos</span>
           </h1>
           <p className="about-subtitle">Desenvolvedor Full Stack</p>
         </header>
@@ -49,10 +50,6 @@ function About() {
               <div className="stat">
                 <span className="stat-number">10+</span>
                 <span className="stat-label">Projetos Concluídos</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">3+</span>
-                <span className="stat-label">Anos de Experiência</span>
               </div>
               <div className="stat">
                 <span className="stat-number">5+</span>
@@ -79,7 +76,7 @@ function About() {
           <div className="about-visual">
             <div className="profile-image">
               <div className="image-placeholder">
-                <span>Sua Foto Aqui</span>
+                <span><img src={Me} alt=""  /></span>
               </div>
               <div className="floating-element element-1">🚀</div>
               <div className="floating-element element-2">💻</div>
@@ -87,32 +84,6 @@ function About() {
             </div>
           </div>
         </div>
-        
-        <div className="skills-section">
-          <h2 className="skills-title">Principais Habilidades</h2>
-          <div className="skills-grid">
-            <div className="skill-item">
-              <span className="skill-name">React</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '90%'}}></div>
-              </div>
-            </div>
-            <div className="skill-item">
-              <span className="skill-name">JavaScript</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '85%'}}></div>
-              </div>
-            </div>
-            <div className="skill-item">
-              <span className="skill-name">Node.js</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '80%'}}></div>
-              </div>
-            </div>
-            <div className="skill-item">
-              <span className="skill-name">CSS</span>
-              <div className="skill-bar">
-                <div className="skill-progress" style={{width: '95%'}}></div>
               </div>
             </div>
           </div>
