@@ -3,7 +3,7 @@ import "../assets/styles/global.css";
 import "../assets/styles/about_css.css";
 import { AnimatedBackground } from 'animated-backgrounds';
 import dwl from "../assets/images/arrow_downward_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg";
-
+import Me from "../assets/images/Beige Simple Photo Signature Twitter Profile Picture.png";
 function About() {
   const sectionRef = useRef(null);
   
@@ -71,7 +71,7 @@ function About() {
           <div className="about-visual">
             <div className="profile-image">
               <div className="image-placeholder">
-                <span>Sua Foto Aqui</span>
+                <span> <img src={Me} alt=""  /></span>
               </div>
               <div className="floating-element element-1">🚀</div>
               <div className="floating-element element-2">💻</div>
