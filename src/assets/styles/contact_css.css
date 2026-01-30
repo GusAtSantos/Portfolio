@@ -15,7 +15,7 @@
     background-color: var(--white);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px #8A2BE2;
 }
 
 .form-group {
@@ -342,7 +342,7 @@
 /* Success state styles */
 .form-group.success input,
 .form-group.success textarea {
-    border-color: #10b981;
+    border-color: #8A2BE2;
     box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
 }
 

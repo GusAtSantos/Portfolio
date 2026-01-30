@@ -26,7 +26,7 @@
 }
 
 .logo:hover {
-  color: #5BBA6F;
+  color: #8A2BE2;
 }
 
 /* Navegação desktop */
@@ -43,7 +43,7 @@
 }
 
 .desktop-nav .nav-menu a:hover {
-  color: #5BBA6F;
+  color: #8A2BE2;
 }
 
 /* Botão mobile */
@@ -114,7 +114,7 @@
 }
 
 .mobile-nav a:hover {
-  color: #5BBA6F;
+  color: #8A2BE2;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
