@@ -107,7 +107,7 @@
   display: block;
   font-size: 2rem;
   font-weight: 700;
-  color: #2563eb;
+  color: #6B46C1;
   margin-bottom: 0.25rem;
 }
 
@@ -137,24 +137,24 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-  color: white;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg, #6B46C1 0%, #E9D8FD 100%);
+  color: rgb(0, 0, 0);
+  box-shadow: 0 4px 6px #6B46C1;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 6px 12px #6B46C1;
 }
 
 .btn-secondary {
   background: transparent;
-  color: #2563eb;
-  border: 2px solid #2563eb;
+  color: var(--secondary-color);
+  border: 2px solid #E9D8FD;
 }
 
 .btn-secondary:hover {
-  background: rgba(37, 99, 235, 0.1);
+  background: #6B46C1;
 }
 
 .btn-icon {
